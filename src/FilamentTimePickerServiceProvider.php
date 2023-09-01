@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace HusamTariq\FilamentTimePicker;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
@@ -13,14 +13,14 @@ use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
-use VendorName\Skeleton\Testing\TestsSkeleton;
+use HusamTariq\FilamentTimePicker\Commands\FilamentTimePickerCommand;
+use HusamTariq\FilamentTimePicker\Testing\TestsFilamentTimePicker;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class FilamentTimePickerServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'skeleton';
+    public static string $name = 'filament3-timepicker';
 
-    public static string $viewNamespace = 'skeleton';
+    public static string $viewNamespace = 'filament3-timepicker';
 
     public function configurePackage(Package $package): void
     {
@@ -34,9 +34,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
-                    ->publishMigrations()
-                    ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub(':vendor_slug/:package_slug');
+                    ->askToStarRepoOnGitHub('husam-tariq/filament3-timepicker');
             });
 
         $configFileName = $package->shortName();
@@ -82,18 +80,18 @@ class SkeletonServiceProvider extends PackageServiceProvider
         if (app()->runningInConsole()) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
-                    $file->getRealPath() => base_path("stubs/skeleton/{$file->getFilename()}"),
-                ], 'skeleton-stubs');
+                    $file->getRealPath() => base_path("stubs/filament3-timepicker/{$file->getFilename()}"),
+                ], 'filament3-timepicker-stubs');
             }
         }
 
         // Testing
-        Testable::mixin(new TestsSkeleton());
+        Testable::mixin(new TestsFilamentTimePicker());
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return ':vendor_slug/:package_slug';
+        return 'husam-tariq/filament3-timepicker';
     }
 
     /**
@@ -102,9 +100,9 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('skeleton', __DIR__ . '/../resources/dist/components/skeleton.js'),
-            Css::make('skeleton-styles', __DIR__ . '/../resources/dist/skeleton.css'),
-            Js::make('skeleton-scripts', __DIR__ . '/../resources/dist/skeleton.js'),
+            // AlpineComponent::make('filament3-timepicker', __DIR__ . '/../resources/dist/components/filament3-timepicker.js'),
+            Css::make('filament3-timepicker-styles', __DIR__ . '/../resources/dist/filament3-timepicker.css'),
+            Js::make('filament3-timepicker-scripts', __DIR__ . '/../resources/dist/filament3-timepicker.js'),
         ];
     }
 
@@ -114,7 +112,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            SkeletonCommand::class,
+            FilamentTimePickerCommand::class,
         ];
     }
 
@@ -148,7 +146,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            'create_skeleton_table',
+            'create_filament3-timepicker_table',
         ];
     }
 }
