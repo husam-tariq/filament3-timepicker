@@ -2,8 +2,6 @@
 
 namespace HusamTariq\FilamentTimePicker\Forms\Components;
 
-use Carbon\Carbon;
-use Closure;
 use Filament\Forms\Components\Field;
 
 class TimePickerField extends Field
@@ -16,7 +14,6 @@ class TimePickerField extends Field
 
     /**
      * @param  array  $cancelLabel
-     * @return TimePickerField
      */
     public function cancelLabel(string $cancelLabel): TimePickerField
     {
@@ -35,7 +32,6 @@ class TimePickerField extends Field
 
     /**
      * @param  array  $okLabel
-     * @return TimePickerField
      */
     public function okLabel(string $okLabel): TimePickerField
     {
@@ -51,9 +47,4 @@ class TimePickerField extends Field
     {
         return $this->okLabel;
     }
-
-
-
-
-
 }

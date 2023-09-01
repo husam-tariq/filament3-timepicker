@@ -8,13 +8,13 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
+use HusamTariq\FilamentTimePicker\Commands\FilamentTimePickerCommand;
+use HusamTariq\FilamentTimePicker\Testing\TestsFilamentTimePicker;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use HusamTariq\FilamentTimePicker\Commands\FilamentTimePickerCommand;
-use HusamTariq\FilamentTimePicker\Testing\TestsFilamentTimePicker;
 
 class FilamentTimePickerServiceProvider extends PackageServiceProvider
 {
@@ -78,7 +78,7 @@ class FilamentTimePickerServiceProvider extends PackageServiceProvider
 
         // Handle Stubs
         if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
+            foreach (app(Filesystem::class)->files(__DIR__.'/../stubs/') as $file) {
                 $this->publishes([
                     $file->getRealPath() => base_path("stubs/filament3-timepicker/{$file->getFilename()}"),
                 ], 'filament3-timepicker-stubs');
@@ -101,8 +101,8 @@ class FilamentTimePickerServiceProvider extends PackageServiceProvider
     {
         return [
             // AlpineComponent::make('filament3-timepicker', __DIR__ . '/../resources/dist/components/filament3-timepicker.js'),
-            Css::make('filament3-timepicker-styles', __DIR__ . '/../resources/dist/filament3-timepicker.css'),
-            Js::make('filament3-timepicker-scripts', __DIR__ . '/../resources/dist/filament3-timepicker.js'),
+            Css::make('filament3-timepicker-styles', __DIR__.'/../resources/dist/filament3-timepicker.css'),
+            Js::make('filament3-timepicker-scripts', __DIR__.'/../resources/dist/filament3-timepicker.js'),
         ];
     }
 
